@@ -13,9 +13,9 @@ package LinkedList;
  */
 public class DetectCycleInLinkedList {
 
-    public static boolean hasCycle(Node head) {
-        Node fast = head;
-        Node slow = head;
+    public static boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
 
         while (fast != null && fast.next != null) {
             fast = fast.next.next;

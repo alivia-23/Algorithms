@@ -5,9 +5,9 @@ package LinkedList;
  * and each of their nodes contains a single digit. Add the two numbers and return the sum as a single liked list
  */
 public class AddTwoNumbers {
-    public Node addTwoNumbers(Node l1, Node l2) {
-        Node dummy = new Node(0);
-        Node cur = dummy;
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
         int carry = 0;
 
         while (l1 != null || l2 != null || carry != 0) {
@@ -24,7 +24,7 @@ public class AddTwoNumbers {
             }
 
             carry = sum / 10;
-            Node node = new Node(sum % 10);
+            ListNode node = new ListNode(sum % 10);
             cur.next = node;
             cur = node;
         }
