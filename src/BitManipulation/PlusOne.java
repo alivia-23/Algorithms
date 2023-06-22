@@ -51,7 +51,7 @@ public class PlusOne {
         for (int i = 0; i < newDigits.length; i++) {
             System.out.print(newDigits[i] + " ");
         }
-        
+
         System.out.println();
 
         int[] digits1 = {9};
