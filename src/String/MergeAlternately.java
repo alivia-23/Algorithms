@@ -39,8 +39,10 @@ public class MergeAlternately {
     }
 
     public static void main(String[] args) {
-        String word1 = "abc";
-        String word2 = "pqr";
+        //String word1 = "abc";
+        //String word2 = "pqr";
+        String word1 = "ab";
+        String word2 = "pqrs";
         String result = mergeStringAlternately(word1, word2);
         System.out.println(result);
     }
