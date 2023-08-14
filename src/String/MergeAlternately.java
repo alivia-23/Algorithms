@@ -7,15 +7,17 @@ public class MergeAlternately {
         int n = word2.length();
         int i = 0;
         int j = 0;
-
         while (i < m || j < n) {
             if (i < m) {
                 result.append(word1.charAt(i));
+                i++;
             }
             if (j < n) {
                 result.append(word2.charAt(j));
+                j++;
             }
         }
+
         return result.toString();
     }
 
@@ -23,5 +25,6 @@ public class MergeAlternately {
         String word1 = "abc";
         String word2 = "pqr";
         String result = mergeStringAlternately(word1, word2);
+        System.out.println(result);
     }
 }
