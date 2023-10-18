@@ -11,6 +11,13 @@ public class Tree {
         }
     }
 
+    // Inorder traversal returns the value in sorted order
+    public void traverseInorder() {
+        if (root != null) {
+            root.traverseInorder();
+        }
+    }
+
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.insert(25);
@@ -21,6 +28,8 @@ public class Tree {
         tree.insert(26);
         tree.insert(22);
         tree.insert(32);
+
+        tree.traverseInorder();
 
     }
 }

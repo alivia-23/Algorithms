@@ -29,6 +29,17 @@ public class TreeNode {
         }
     }
 
+    // Inorder traversal returns the value in sorted order
+    public void traverseInorder() {
+        if (left != null) {
+            left.traverseInorder();
+        }
+        System.out.println("Root data= " + val + "," );
+        if (right != null) {
+            right.traverseInorder();
+        }
+    }
+
     public int getVal() {
         return val;
     }
