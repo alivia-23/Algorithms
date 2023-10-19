@@ -47,15 +47,37 @@ public class TreeNode {
 
     // Inorder traversal returns the value in sorted order
     public void traverseInorder() {
-        if (left != null) {
+        if (left != null) {  // left
             left.traverseInorder();
         }
-        System.out.print(val + "," );
-        if (right != null) {
+        System.out.print(val + "," ); // root
+        if (right != null) {  // right
             right.traverseInorder();
         }
     }
+    // Pre-order traversal
+    public void traversePreOrder() {
+        System.out.print(val + "," ); // first visit root data node
 
+        if (left != null) {  // left
+            left.traverseInorder();
+        }
+
+        if (right != null) { // right
+            right.traverseInorder();
+        }
+    }
+    // post order traversal
+    public void traversePostOrder() {
+        if (left != null) {  // left
+            left.traverseInorder();
+        }
+
+        if (right != null) { // right
+            right.traverseInorder();
+        }
+        System.out.print(val + "," ); // first visit root data node
+    }
     // Find minimum value
     public int min() {
         if (left == null) {
