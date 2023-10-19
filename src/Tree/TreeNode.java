@@ -76,7 +76,7 @@ public class TreeNode {
         if (right != null) { // right
             right.traverseInorder();
         }
-        System.out.print(val + "," ); // first visit root data node
+        System.out.print(val + "," ); // visit root data node last
     }
     // Find minimum value
     public int min() {
