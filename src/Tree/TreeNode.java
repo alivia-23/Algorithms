@@ -29,16 +29,51 @@ public class TreeNode {
         }
     }
 
+    public TreeNode get(int value) {
+        if (value == val) {
+            return this;
+        }
+        if (value < val) {
+            if (left != null) {
+                return left.get(value);
+            }
+        } else {
+            if (right != null) {
+                return right.get(value);
+            }
+        }
+        return null;
+    }
+
     // Inorder traversal returns the value in sorted order
     public void traverseInorder() {
         if (left != null) {
             left.traverseInorder();
         }
-        System.out.println("Root data= " + val + "," );
+        System.out.print(val + "," );
         if (right != null) {
             right.traverseInorder();
         }
     }
+
+    // Find minimum value
+    public int min() {
+        if (left == null) {
+            return val;
+        }
+        else {
+            return left.min();
+        }
+    }
+    // Find maximum value
+    public int max() {
+        if (right == null) {
+            return val;
+        } else {
+            return right.max();
+        }
+    }
+
 
     public int getVal() {
         return val;
@@ -62,5 +97,9 @@ public class TreeNode {
 
     public void setRight(TreeNode right) {
         this.right = right;
+    }
+
+    public String toString() {
+        return "Data = " + val;
     }
 }
