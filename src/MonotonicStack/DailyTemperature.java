@@ -21,7 +21,12 @@ import java.util.Stack;
 public class DailyTemperature {
     public static int[] dailyTemperatures(int[] temperatures) {
         int[] result = new int[temperatures.length];
-        // stack is used to keep track of the next greater temperature by storing and calculating the index values of temperatures
+        // stack is used to keep track of the next greater temperature by storing
+        // and calculating the index values of temperatures
+        // calculate num of days to wait by subtracting previous greatest element's index at
+        // the top of stack to the current temperature which is greater than it
+        // store the calculated subtraction value in the previous greatest value's index
+        // in result array
         Stack<Integer> stack = new Stack<>();
 
         for (int i = 0; i < temperatures.length; i++) {
