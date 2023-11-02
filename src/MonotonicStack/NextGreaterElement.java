@@ -20,22 +20,35 @@ import java.util.Stack;
 
 public class NextGreaterElement {
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>(); // map will store the next greater value element(value) greater than the current element(key)
-        Stack<Integer> stack = new Stack<>();  // use stack to keep track of next greater element by using a monotonic increasing stack
+        // Create a Map to keep track of next greater element for the current element
+        // Create a stack to find the next greater element
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
 
-        //process each num in nums2
+        // process throght the nums2 array to find the next greater element
         for (int num : nums2) {
+            // if the top element of stack is less than current element then
+            // num is the next greater element of the top of stack element
+            // so pop out the element from the stack and put in the map as key and
+            // current num as its value(next greater element for this top stack element)
             while (!stack.isEmpty() && stack.peek() < num) {
-                int val = stack.pop();
-                map.put(val, num);
+                int key = stack.pop();
+                map.put(key, num);
             }
             stack.push(num);
         }
 
+        // we'll just modify the nums1 array to show the output array
+        //first for every element in nums1 array we look at the map if it exists as key in
+        // the map and get the next greater element value for that key
+        // then replace that key in the nums1 array with its value from the map
+        // also for last element in the array we just replace with -1 as
+        // we cannot find any next greater element to the last element
         for (int i = 0; i < nums1.length; i++) {
             nums1[i] = map.getOrDefault(nums1[i], -1);
         }
         return nums1;
+
     }
 
     public static void print(int[] nums) {
