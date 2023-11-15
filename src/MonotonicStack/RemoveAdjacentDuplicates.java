@@ -36,14 +36,19 @@ public class RemoveAdjacentDuplicates {
         return result.toString();
     }
 
-    public static void print(String s) {
+    public static void printAll(String s) {
+        if (s.length() == 0) {
+            System.out.println("Empty String");
+        }
         for (char c : s.toCharArray()) {
-            System.out.print(c + " ");
+            System.out.print(c);
         }
     }
     public static void main(String[] args) {
-        String s = "abccba";
-        String result = removeAdjacentDuplicates(s);
-        print(result);
+        String s1 = "abccba";
+        String s2 = "foobar";
+        String s3 = "abcd";
+        String result = removeAdjacentDuplicates(s3);
+        printAll(result);
     }
 }
