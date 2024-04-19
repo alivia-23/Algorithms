@@ -12,13 +12,13 @@ package TwoPointerPatterns;
  */
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] != val) {
-                nums[i] = nums[j];
-                i++;
+        int writer = 0;
+        for (int reader = 0; reader < nums.length; reader++) {
+            if (nums[reader] != val) {
+                nums[writer] = nums[reader];
+                writer++;
             }
         }
-        return i;
+        return writer;
     }
 }
