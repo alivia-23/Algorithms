@@ -11,8 +11,8 @@ public class Cache {
     private final DLLNode tail;  // dummy tail of the doubly linkedlist
     // Constructor to initialize the cache
     public Cache(int capacity) {
-        this.capacity = capacity;
-        this.size = 0;
+        this.capacity = capacity; // maximum capacity of the cache
+        this.size = 0; // current/running size of the cache
         this.cacheMap = new HashMap<>();
         head = new DLLNode(0, 0);
         tail = new DLLNode(0, 0);
@@ -31,6 +31,25 @@ public class Cache {
         }
 
         return foundNode.value;
+    }
+
+    // Add a new key-value pair to the cache or updates the key-value pair with new value
+    public void put(int key, int value) {
+        if (cacheMap.containsKey(key)) {
+            DLLNode foundNode = cacheMap.get(key);
+            foundNode.value = value;
+            moveToHead(foundNode);
+        } else {
+            DLLNode newNode = new DLLNode(key, value);
+            cacheMap.put(key, newNode);
+            addToHead(newNode);
+            size++;
+            if (size > capacity) {
+                DLLNode lruNode = remmoveFromTail(); // returns the deleted least recently used node from the doubly linkedlist
+                cacheMap.remove(lruNode.key);
+                size--;
+            }
+        }
     }
 
     // Moves the recently accessed node next to the head node of the doubly linked list
