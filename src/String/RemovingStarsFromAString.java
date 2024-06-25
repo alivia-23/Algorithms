@@ -30,6 +30,26 @@ public class RemovingStarsFromAString {
         return result.toString();
     }
 
+    // Alternate method using Two pointers
+    public static String removeStars1(String s) {
+        char[] ch = new char[s.length()];
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '*') {
+                j--;
+            } else {
+                ch[j] = c;
+                j++;
+            }
+        }
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < j; i++) {
+            result.append(ch[i]);
+        }
+        return result.toString();
+    }
+
     public static void main(String[] args) {
         String s = "leet**cod*e";
         String s1 = "erase*****";
