@@ -1,6 +1,8 @@
 package PatternIntervals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
@@ -15,8 +17,20 @@ import java.util.Arrays;
  * Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  */
 public class MergeIntervals {
-    public int[] mergeInterval(int[][] intervals) {
+    public static int[][] mergeInterval(int[][] intervals) {
+        if (intervals.length <= 1) {
+            return intervals;
+        }
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-        return new int[] {};
+        List<int[]> result = new ArrayList<>();
+
+        for (int[] interval : intervals) {
+            if (result.isEmpty() || result.get(result.size()-1)[1] < interval[0] ) {
+                result.add(interval);
+            } else {
+                result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], interval[1]);
+            }
+        }
+        return result.toArray(new int[result.size()][]);
     }
 }
