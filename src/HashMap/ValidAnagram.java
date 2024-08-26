@@ -17,19 +17,27 @@ import java.util.Map;
  */
 public class ValidAnagram {
     public static boolean isValidAnagram(String s, String t) {
-        Map<Character, Integer> map = new HashMap<>();
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+
         for (char c : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
         }
         for (char c : t.toCharArray()) {
-            if (map.containsKey(c)) {
-                int count = map.get(c);
-                if (count == 0) {
-                    map.remove(c);
-                } else {
-                    map.put(c, map.getOrDefault(c, 0) - 1);
-                }
-            } else {
+            map2.put(c, map2.getOrDefault(c, 0) + 1);
+        }
+
+        for (char key : map1.keySet()) {
+            int sValue = map1.get(key);
+            if (!map2.containsKey(key)) {
+                return false;
+            }
+            int tValue = map2.get(key);
+            if (sValue != tValue) {
                 return false;
             }
         }
@@ -42,7 +50,9 @@ public class ValidAnagram {
 
         String s1 = "rat";
         String t1 = "car";
+        String s2 = "bbcc";
+        String t2 = "ccbc";
         System.out.println(isValidAnagram(s, t));
-        System.out.println(isValidAnagram(s1, t1));
+        System.out.println(isValidAnagram(s2, t2));
     }
 }
