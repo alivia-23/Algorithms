@@ -17,6 +17,31 @@ import java.util.Set;
  * Output: 9
  */
 public class LongestConsecutiveSequence {
+    /*
+    // Brute Force method
+    private static boolean containsNum(int[] arr, int num) {
+        for (int n : arr) {
+            if (n == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static int longestConsecutive(int[] nums) {
+        int maxLength = 0;
+        for (int num : nums) {
+            int curNum = num;
+            int length = 1;
+            while (containsNum(nums, curNum + 1)) {
+                curNum++;
+                length++;
+            }
+            maxLength = Math.max(maxLength, length);
+        }
+        return maxLength;
+    }*/
+
+    // Optimized method
     public static int longestConsecutive(int[] nums) {
         int maxConsecutiveCount = 0;
         Set<Integer> set = new HashSet<>();
