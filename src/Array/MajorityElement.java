@@ -1,8 +1,5 @@
 package Array;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Given an array nums of size n, return the majority element.
  * The majority element is the element that appears more than ⌊n / 2⌋ times.
@@ -15,29 +12,42 @@ import java.util.Map;
  * Output: 2
  */
 public class MajorityElement {
+//    public static int majorityElement(int[] nums) {
+//        int n = nums.length;
+//        if (n == 1) {
+//            return nums[0];
+//        }
+//        int result = 0;
+//        Map<Integer, Integer> map = new HashMap<>();
+//        for (int num : nums) {
+//            map.put(num, map.getOrDefault(num, 0) + 1);
+//        }
+//        for (int key : map.keySet()) {
+//            int count = map.get(key);
+//            if (count > n /2) {
+//                result = key;
+//            }
+//        }
+//        return result;
+//    }
+
+    // Alternate method :- Boyer Moore Majority Voting Algorithm
     public static int majorityElement(int[] nums) {
-        int n = nums.length;
-        if (n == 1) {
-            return nums[0];
+        int candidate = 0;
+        int count = 0;
+
+        for (int element : nums) {
+            if (count == 0) candidate = element;
+            if (element == candidate) count++;
+            else count--;
         }
-        int result = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        for (int key : map.keySet()) {
-            int count = map.get(key);
-            if (count > n /2) {
-                result = key;
-            }
-        }
-        return result;
+        return candidate;
     }
 
     public static void main(String[] args) {
         int[] nums = {3,2,3};
         int[] nums1 = {2,2,1,1,1,2,2};
-        int result = majorityElement(nums1);
+        int result = majorityElement(nums);
         System.out.println(result);
     }
 }
