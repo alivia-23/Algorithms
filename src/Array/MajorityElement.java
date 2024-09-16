@@ -31,7 +31,15 @@ public class MajorityElement {
 //        return result;
 //    }
 
-    // Alternate method :- Boyer Moore Majority Voting Algorithm
+    /**
+     *  Alternate method :- Boyer Moore Majority Voting Algorithm
+     *  Logic :-
+     *  Let candidate to hold our majority element
+     *  if count = 0 we will have current element as our candidate
+     *  if current element is same as candidate we increment count
+     *  or else if current element is a different number than the candidate number then we decrement our count
+     *  Therefore at the end candidate will hold the number which occurs the maximum number of times
+     */
     public static int majorityElement(int[] nums) {
         int candidate = 0;
         int count = 0;
