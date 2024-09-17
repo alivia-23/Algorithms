@@ -1,7 +1,5 @@
 package Stack;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -21,17 +19,49 @@ import java.util.Stack;
  */
 public class ValidParentheses {
 
+//    public static boolean isValidParentheses(String s) {
+//        Map<Character, Character> map = new HashMap<>();
+//        map.put(')', '(');
+//        map.put(']', '[');
+//        map.put('}', '{');
+//        Stack<Character> stack = new Stack<>();
+//
+//        for (char c : s.toCharArray()) {
+//            if (map.containsKey(c)) {
+//                if (stack.isEmpty()) return false;
+//                if (stack.peek() == map.get(c)) {
+//                    stack.pop();
+//                } else {
+//                    return false;
+//                }
+//            } else {
+//                stack.push(c);
+//            }
+//        }
+//        return stack.isEmpty();
+//    }
+
     public static boolean isValidParentheses(String s) {
-        Map<Character, Character> map = new HashMap<>();
-        map.put(')', '(');
-        map.put(']', '[');
-        map.put('}', '{');
-        Stack<Character> stack = new Stack<>();
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+        Stack<Character> stack = new Stack<>(); // stack holds the opening brackets
 
         for (char c : s.toCharArray()) {
-            if (map.containsKey(c)) {
-                if (stack.isEmpty()) return false;
-                if (stack.peek() == map.get(c)) {
+            if (c == ')') {
+                if (!stack.isEmpty() && stack.peek() == '(') {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else if (c == '}') {
+                if (!stack.isEmpty() && stack.peek() == '{') {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else if (c == ']') {
+                if (!stack.isEmpty() && stack.peek() == '[') {
                     stack.pop();
                 } else {
                     return false;
