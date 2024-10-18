@@ -31,7 +31,7 @@ public class FindMiddleIndex {
         }
         int leftSum = 0;
         for (int i = 0; i < nums.length; i++) {
-            int rightSum = totalSum - leftSum - nums[i];
+            int rightSum = totalSum - nums[i] - leftSum;
             if (leftSum == rightSum) {
                 return i;
             }
